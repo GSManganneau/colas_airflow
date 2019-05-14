@@ -8,7 +8,7 @@ services:
             - POSTGRES_DB=airflow
 
     webserver:
-        image: puckel/docker-airflow:1.10.2
+        image: puckel/docker-airflow
         restart: always
         depends_on:
             - postgres
@@ -21,6 +21,7 @@ services:
             - ./plugins:/usr/local/airflow/plugins
             - ./utils:/usr/local/airflow/utils
             - ./requirements.txt:/requirements.txt
+            - ./airflow.cfg:/usr/local/airflow/airflow.cfg
         ports:
             - "8080:8080"
         command: webserver
